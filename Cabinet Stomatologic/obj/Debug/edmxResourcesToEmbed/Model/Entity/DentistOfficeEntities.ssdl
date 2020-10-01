@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DentistOfficeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="idAccount" />
+    </Key>
+    <Property Name="idAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="pass" Type="varchar" MaxLength="50" />
+    <Property Name="idUserType" Type="int" />
+  </EntityType>
+  <EntityType Name="appointment">
+    <Key>
+      <PropertyRef Name="idAppointment" />
+    </Key>
+    <Property Name="idAppointment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dateAppointment" Type="date" />
+    <Property Name="timeAppointemnt" Type="time" Precision="7" />
+    <Property Name="duration" Type="int" />
+    <Property Name="idBill" Type="int" />
+    <Property Name="idDoctor" Type="int" />
+    <Property Name="idPatient" Type="int" />
+    <Property Name="idProcedure" Type="int" />
+  </EntityType>
+  <EntityType Name="bill">
+    <Key>
+      <PropertyRef Name="idBill" />
+    </Key>
+    <Property Name="idBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dateBill" Type="date" />
+    <Property Name="idStatusBill" Type="int" />
+    <Property Name="idPayment" Type="int" />
+  </EntityType>
+  <EntityType Name="doctor">
+    <Key>
+      <PropertyRef Name="idDoctor" />
+    </Key>
+    <Property Name="idDoctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPersonInformation" Type="int" />
+    <Property Name="idPhoto" Type="int" />
+    <Property Name="recordStatus" Type="varchar" MaxLength="20" />
+    <Property Name="fullname" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="doctorPhoto">
+    <Key>
+      <PropertyRef Name="idPhoto" />
+    </Key>
+    <Property Name="idPhoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="doctorProcedure">
+    <Key>
+      <PropertyRef Name="idProcedure" />
+    </Key>
+    <Property Name="idProcedure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameProcedure" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="patient">
+    <Key>
+      <PropertyRef Name="idPatient" />
+    </Key>
+    <Property Name="idPatient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" />
+    <Property Name="idPersonInformation" Type="int" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="idPayment" />
+    </Key>
+    <Property Name="idPayment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="payDate" Type="date" />
+    <Property Name="idPayMethod" Type="int" />
+  </EntityType>
+  <EntityType Name="PayMethod">
+    <Key>
+      <PropertyRef Name="idPayMethod" />
+    </Key>
+    <Property Name="idPayMethod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="namePayMehod" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="personinformation">
+    <Key>
+      <PropertyRef Name="idPersonInformation" />
+    </Key>
+    <Property Name="idPersonInformation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adress" Type="varchar" MaxLength="100" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="birthdate" Type="date" />
+  </EntityType>
+  <EntityType Name="statusBill">
+    <Key>
+      <PropertyRef Name="idStatusBill" />
+    </Key>
+    <Property Name="idStatusBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameStatusBill" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="idUserType" />
+    </Key>
+    <Property Name="idUserType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="displayName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__account__idUserT__72C60C4A">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="idUserType" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="idUserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__appointme__idBil__4AB81AF0">
+    <End Role="bill" Type="Self.bill" Multiplicity="0..1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bill">
+        <PropertyRef Name="idBill" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__appointme__idDoc__4BAC3F29">
+    <End Role="doctor" Type="Self.doctor" Multiplicity="0..1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctor">
+        <PropertyRef Name="idDoctor" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__appointme__idPat__4CA06362">
+    <End Role="patient" Type="Self.patient" Multiplicity="0..1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="idPatient" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idPatient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__appointme__idPro__5AEE82B9">
+    <End Role="doctorProcedure" Type="Self.doctorProcedure" Multiplicity="0..1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctorProcedure">
+        <PropertyRef Name="idProcedure" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idProcedure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__bill__idPayment__47DBAE45">
+    <End Role="payment" Type="Self.payment" Multiplicity="0..1" />
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payment">
+        <PropertyRef Name="idPayment" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="idPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__bill__idStatusBi__46E78A0C">
+    <End Role="statusBill" Type="Self.statusBill" Multiplicity="0..1" />
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusBill">
+        <PropertyRef Name="idStatusBill" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="idStatusBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__doctor__idPerson__3B75D760">
+    <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+    <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personinformation">
+        <PropertyRef Name="idPersonInformation" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="idPersonInformation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__doctor__idPhoto__5629CD9C">
+    <End Role="doctorPhoto" Type="Self.doctorPhoto" Multiplicity="0..1" />
+    <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctorPhoto">
+        <PropertyRef Name="idPhoto" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="idPhoto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__patient__idPerso__38996AB5">
+    <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+    <End Role="patient" Type="Self.patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personinformation">
+        <PropertyRef Name="idPersonInformation" />
+      </Principal>
+      <Dependent Role="patient">
+        <PropertyRef Name="idPersonInformation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payment__idPayMe__4222D4EF">
+    <End Role="PayMethod" Type="Self.PayMethod" Multiplicity="0..1" />
+    <End Role="payment" Type="Self.payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PayMethod">
+        <PropertyRef Name="idPayMethod" />
+      </Principal>
+      <Dependent Role="payment">
+        <PropertyRef Name="idPayMethod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+    <Parameter Name="idUserType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="firstName" Type="varchar" Mode="In" />
+    <Parameter Name="lastName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AddDoctorDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fullname" Type="varchar" Mode="In" />
+    <Parameter Name="adress" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AddPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="firstName" Type="varchar" Mode="In" />
+    <Parameter Name="lastName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AddPatientDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPatient" Type="int" Mode="In" />
+    <Parameter Name="adress" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="birthDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="AddPhotoAndFindId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="img" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DeactivateDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idDoc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="FindDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="firstName" Type="varchar" Mode="In" />
+    <Parameter Name="lastName" Type="varchar" Mode="In" />
+    <Parameter Name="idDoctor" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="FindPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="firstName" Type="varchar" Mode="In" />
+    <Parameter Name="lastName" Type="varchar" Mode="In" />
+    <Parameter Name="idPatient" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="FindPersonInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="idPersonInformation" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="UpdateDoctorDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idDoc" Type="int" Mode="In" />
+    <Parameter Name="fullname" Type="varchar" Mode="In" />
+    <Parameter Name="adress" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DentistOfficeModelStoreContainer">
+    <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="appointment" EntityType="Self.appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bill" EntityType="Self.bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="doctor" EntityType="Self.doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="doctorPhoto" EntityType="Self.doctorPhoto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="doctorProcedure" EntityType="Self.doctorProcedure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patient" EntityType="Self.patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayMethod" EntityType="Self.PayMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="personinformation" EntityType="Self.personinformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusBill" EntityType="Self.statusBill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__account__idUserT__72C60C4A" Association="Self.FK__account__idUserT__72C60C4A">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__appointme__idBil__4AB81AF0" Association="Self.FK__appointme__idBil__4AB81AF0">
+      <End Role="bill" EntitySet="bill" />
+      <End Role="appointment" EntitySet="appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__appointme__idDoc__4BAC3F29" Association="Self.FK__appointme__idDoc__4BAC3F29">
+      <End Role="doctor" EntitySet="doctor" />
+      <End Role="appointment" EntitySet="appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__appointme__idPat__4CA06362" Association="Self.FK__appointme__idPat__4CA06362">
+      <End Role="patient" EntitySet="patient" />
+      <End Role="appointment" EntitySet="appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__appointme__idPro__5AEE82B9" Association="Self.FK__appointme__idPro__5AEE82B9">
+      <End Role="doctorProcedure" EntitySet="doctorProcedure" />
+      <End Role="appointment" EntitySet="appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__bill__idPayment__47DBAE45" Association="Self.FK__bill__idPayment__47DBAE45">
+      <End Role="payment" EntitySet="payment" />
+      <End Role="bill" EntitySet="bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__bill__idStatusBi__46E78A0C" Association="Self.FK__bill__idStatusBi__46E78A0C">
+      <End Role="statusBill" EntitySet="statusBill" />
+      <End Role="bill" EntitySet="bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__doctor__idPerson__3B75D760" Association="Self.FK__doctor__idPerson__3B75D760">
+      <End Role="personinformation" EntitySet="personinformation" />
+      <End Role="doctor" EntitySet="doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__doctor__idPhoto__5629CD9C" Association="Self.FK__doctor__idPhoto__5629CD9C">
+      <End Role="doctorPhoto" EntitySet="doctorPhoto" />
+      <End Role="doctor" EntitySet="doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__patient__idPerso__38996AB5" Association="Self.FK__patient__idPerso__38996AB5">
+      <End Role="personinformation" EntitySet="personinformation" />
+      <End Role="patient" EntitySet="patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payment__idPayMe__4222D4EF" Association="Self.FK__payment__idPayMe__4222D4EF">
+      <End Role="PayMethod" EntitySet="PayMethod" />
+      <End Role="payment" EntitySet="payment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

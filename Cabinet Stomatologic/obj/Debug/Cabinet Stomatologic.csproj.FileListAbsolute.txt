@@ -1,0 +1,115 @@
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Cabinet Stomatologic.exe.config
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Cabinet Stomatologic.exe
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Cabinet Stomatologic.pdb
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Hangfire.Core.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Owin.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Hangfire.Core.xml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\es\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\fa\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\nl\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\pt\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\pt-BR\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\pt-PT\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\zh\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\zh-TW\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.csprojAssemblyReference.cache
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\MainWindow.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\DoctorsView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PatientView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\App.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic_MarkupCompile.cache
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic_MarkupCompile.lref
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\App.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\MainWindow.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\DoctorsView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PatientView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.g.resources
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet_Stomatologic.Properties.Resources.resources
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.csproj.GenerateResource.cache
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.csproj.CopyComplete
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.exe
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.pdb
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.xml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic_Content.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormPersonView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormPersonView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PersonInfromationView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PersonInfromationView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\LogInView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\LogInView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\SignUpView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\SignUpView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AddAppointmentView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AddAppointmentView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AppointmentsView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AppointmentsView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\ProcedureView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\ProcedureView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AccountsView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormAccountView.g.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AccountsView.baml
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormAccountView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Cabinet Stomatologic.exe.config
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Cabinet Stomatologic.exe
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Cabinet Stomatologic.pdb
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Hangfire.Core.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Owin.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.xml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Hangfire.Core.xml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\es\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\fa\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\nl\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\pt\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\pt-BR\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\pt-PT\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\zh\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\bin\Debug\zh-TW\Hangfire.Core.resources.dll
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.csprojAssemblyReference.cache
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\MainWindow.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AccountsView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AddAppointmentView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AppointmentsView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\DoctorsView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormAccountView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormPersonView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\LogInView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PatientView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PersonInfromationView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\ProcedureView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\SignUpView.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\App.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic_Content.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic_MarkupCompile.cache
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic_MarkupCompile.lref
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\App.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\MainWindow.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AccountsView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AddAppointmentView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\AppointmentsView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\DoctorsView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormAccountView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\FormPersonView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\LogInView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PatientView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\PersonInfromationView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\ProcedureView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\View\SignUpView.baml
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.g.resources
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet_Stomatologic.Properties.Resources.resources
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.csproj.GenerateResource.cache
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.csproj.CoreCompileInputs.cache
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.csproj.CopyComplete
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.exe
+C:\Users\Adriana\Desktop\Anul II sem II\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\Cabinet Stomatologic.pdb

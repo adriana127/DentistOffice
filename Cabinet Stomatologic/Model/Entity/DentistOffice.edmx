@@ -1,0 +1,1069 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DentistOfficeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="idAccount" />
+          </Key>
+          <Property Name="idAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="pass" Type="varchar" MaxLength="50" />
+          <Property Name="idUserType" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="appointment">
+          <Key>
+            <PropertyRef Name="idAppointment" />
+          </Key>
+          <Property Name="idAppointment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateAppointment" Type="date" />
+          <Property Name="timeAppointemnt" Type="time" Precision="7" />
+          <Property Name="duration" Type="int" />
+          <Property Name="idBill" Type="int" />
+          <Property Name="idDoctor" Type="int" />
+          <Property Name="idPatient" Type="int" />
+          <Property Name="idProcedure" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="bill">
+          <Key>
+            <PropertyRef Name="idBill" />
+          </Key>
+          <Property Name="idBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateBill" Type="date" />
+          <Property Name="idStatusBill" Type="int" />
+          <Property Name="idPayment" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="doctor">
+          <Key>
+            <PropertyRef Name="idDoctor" />
+          </Key>
+          <Property Name="idDoctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPersonInformation" Type="int" />
+          <Property Name="idPhoto" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="20" />
+          <Property Name="fullname" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="doctorPhoto">
+          <Key>
+            <PropertyRef Name="idPhoto" />
+          </Key>
+          <Property Name="idPhoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="doctorProcedure">
+          <Key>
+            <PropertyRef Name="idProcedure" />
+          </Key>
+          <Property Name="idProcedure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameProcedure" Type="varchar" MaxLength="200" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+          <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="patient">
+          <Key>
+            <PropertyRef Name="idPatient" />
+          </Key>
+          <Property Name="idPatient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPersonInformation" Type="int" />
+          <Property Name="idDoc" Type="int" />
+          <Property Name="fullname" Type="varchar" MaxLength="100" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="idPayment" />
+          </Key>
+          <Property Name="idPayment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payDate" Type="date" />
+          <Property Name="idPayMethod" Type="int" />
+          <Property Name="recordStatus" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PayMethod">
+          <Key>
+            <PropertyRef Name="idPayMethod" />
+          </Key>
+          <Property Name="idPayMethod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namePayMehod" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="personinformation">
+          <Key>
+            <PropertyRef Name="idPersonInformation" />
+          </Key>
+          <Property Name="idPersonInformation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adress" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="birthdate" Type="date" />
+        </EntityType>
+        <EntityType Name="statusBill">
+          <Key>
+            <PropertyRef Name="idStatusBill" />
+          </Key>
+          <Property Name="idStatusBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameStatusBill" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="idUserType" />
+          </Key>
+          <Property Name="idUserType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="displayName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__account__idUserT__72C60C4A">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="account" Type="Self.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="idUserType" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="idUserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idBil__4AB81AF0">
+          <End Role="bill" Type="Self.bill" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bill">
+              <PropertyRef Name="idBill" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idBill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idDoc__4BAC3F29">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="idDoctor" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idPat__4CA06362">
+          <End Role="patient" Type="Self.patient" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="patient">
+              <PropertyRef Name="idPatient" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idPro__5AEE82B9">
+          <End Role="doctorProcedure" Type="Self.doctorProcedure" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctorProcedure">
+              <PropertyRef Name="idProcedure" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idProcedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bill__idPayment__47DBAE45">
+          <End Role="payment" Type="Self.payment" Multiplicity="0..1" />
+          <End Role="bill" Type="Self.bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment">
+              <PropertyRef Name="idPayment" />
+            </Principal>
+            <Dependent Role="bill">
+              <PropertyRef Name="idPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bill__idStatusBi__46E78A0C">
+          <End Role="statusBill" Type="Self.statusBill" Multiplicity="0..1" />
+          <End Role="bill" Type="Self.bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusBill">
+              <PropertyRef Name="idStatusBill" />
+            </Principal>
+            <Dependent Role="bill">
+              <PropertyRef Name="idStatusBill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doctor__idPerson__3B75D760">
+          <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+          <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personinformation">
+              <PropertyRef Name="idPersonInformation" />
+            </Principal>
+            <Dependent Role="doctor">
+              <PropertyRef Name="idPersonInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doctor__idPhoto__5629CD9C">
+          <End Role="doctorPhoto" Type="Self.doctorPhoto" Multiplicity="0..1" />
+          <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctorPhoto">
+              <PropertyRef Name="idPhoto" />
+            </Principal>
+            <Dependent Role="doctor">
+              <PropertyRef Name="idPhoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__patient__idDoc__7A672E12">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="0..1" />
+          <End Role="patient" Type="Self.patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="idDoctor" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="idDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__patient__idPerso__38996AB5">
+          <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+          <End Role="patient" Type="Self.patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personinformation">
+              <PropertyRef Name="idPersonInformation" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="idPersonInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__payment__idPayMe__4222D4EF">
+          <End Role="PayMethod" Type="Self.PayMethod" Multiplicity="0..1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayMethod">
+              <PropertyRef Name="idPayMethod" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="idPayMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+          <Parameter Name="idUserType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="duration" Type="int" Mode="In" />
+          <Parameter Name="iddoc" Type="int" Mode="In" />
+          <Parameter Name="idpatient" Type="int" Mode="In" />
+          <Parameter Name="idprocedure" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddDoctorDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fullname" Type="varchar" Mode="In" />
+          <Parameter Name="adress" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddMedicalProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddPatientDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fullname" Type="varchar" Mode="In" />
+          <Parameter Name="adress" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="docId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddPhotoAndFindId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="img" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="CalculateSalaryOnMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="salary" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="DeactivateAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeactivateAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeactivateDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeactivateMedicalProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeactivatePatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDoc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FindDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="lastName" Type="varchar" Mode="In" />
+          <Parameter Name="idDoctor" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="FindPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="lastName" Type="varchar" Mode="In" />
+          <Parameter Name="idPatient" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="FindPersonInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="idPersonInformation" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="ModifyAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ModifyAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="duration" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="iddoc" Type="int" Mode="In" />
+          <Parameter Name="idpatient" Type="int" Mode="In" />
+          <Parameter Name="idprocedure" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SearchPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fullname" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateDoctorDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDoc" Type="int" Mode="In" />
+          <Parameter Name="fullname" Type="varchar" Mode="In" />
+          <Parameter Name="adress" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateMedicalProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdatePatientDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idpatient" Type="int" Mode="In" />
+          <Parameter Name="fullname" Type="varchar" Mode="In" />
+          <Parameter Name="adress" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="docId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DentistOfficeModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="appointment" EntityType="Self.appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bill" EntityType="Self.bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doctor" EntityType="Self.doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doctorPhoto" EntityType="Self.doctorPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doctorProcedure" EntityType="Self.doctorProcedure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="patient" EntityType="Self.patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayMethod" EntityType="Self.PayMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personinformation" EntityType="Self.personinformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statusBill" EntityType="Self.statusBill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__account__idUserT__72C60C4A" Association="Self.FK__account__idUserT__72C60C4A">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="account" EntitySet="account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idBil__4AB81AF0" Association="Self.FK__appointme__idBil__4AB81AF0">
+            <End Role="bill" EntitySet="bill" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idDoc__4BAC3F29" Association="Self.FK__appointme__idDoc__4BAC3F29">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idPat__4CA06362" Association="Self.FK__appointme__idPat__4CA06362">
+            <End Role="patient" EntitySet="patient" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idPro__5AEE82B9" Association="Self.FK__appointme__idPro__5AEE82B9">
+            <End Role="doctorProcedure" EntitySet="doctorProcedure" />
+            <End Role="appointment" EntitySet="appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bill__idPayment__47DBAE45" Association="Self.FK__bill__idPayment__47DBAE45">
+            <End Role="payment" EntitySet="payment" />
+            <End Role="bill" EntitySet="bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bill__idStatusBi__46E78A0C" Association="Self.FK__bill__idStatusBi__46E78A0C">
+            <End Role="statusBill" EntitySet="statusBill" />
+            <End Role="bill" EntitySet="bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doctor__idPerson__3B75D760" Association="Self.FK__doctor__idPerson__3B75D760">
+            <End Role="personinformation" EntitySet="personinformation" />
+            <End Role="doctor" EntitySet="doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doctor__idPhoto__5629CD9C" Association="Self.FK__doctor__idPhoto__5629CD9C">
+            <End Role="doctorPhoto" EntitySet="doctorPhoto" />
+            <End Role="doctor" EntitySet="doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__patient__idDoc__7A672E12" Association="Self.FK__patient__idDoc__7A672E12">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="patient" EntitySet="patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__patient__idPerso__38996AB5" Association="Self.FK__patient__idPerso__38996AB5">
+            <End Role="personinformation" EntitySet="personinformation" />
+            <End Role="patient" EntitySet="patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__payment__idPayMe__4222D4EF" Association="Self.FK__payment__idPayMe__4222D4EF">
+            <End Role="PayMethod" EntitySet="PayMethod" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DentistOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="idAccount" />
+          </Key>
+          <Property Name="idAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idUserType" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK__account__idUserT__72C60C4A" FromRole="account" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="appointment">
+          <Key>
+            <PropertyRef Name="idAppointment" />
+          </Key>
+          <Property Name="idAppointment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateAppointment" Type="DateTime" Precision="0" />
+          <Property Name="timeAppointemnt" Type="Time" Precision="7" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="idBill" Type="Int32" />
+          <Property Name="idDoctor" Type="Int32" />
+          <Property Name="idPatient" Type="Int32" />
+          <Property Name="idProcedure" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bill" Relationship="Self.FK__appointme__idBil__4AB81AF0" FromRole="appointment" ToRole="bill" />
+          <NavigationProperty Name="doctor" Relationship="Self.FK__appointme__idDoc__4BAC3F29" FromRole="appointment" ToRole="doctor" />
+          <NavigationProperty Name="patient" Relationship="Self.FK__appointme__idPat__4CA06362" FromRole="appointment" ToRole="patient" />
+          <NavigationProperty Name="doctorProcedure" Relationship="Self.FK__appointme__idPro__5AEE82B9" FromRole="appointment" ToRole="doctorProcedure" />
+        </EntityType>
+        <EntityType Name="bill">
+          <Key>
+            <PropertyRef Name="idBill" />
+          </Key>
+          <Property Name="idBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateBill" Type="DateTime" Precision="0" />
+          <Property Name="idStatusBill" Type="Int32" />
+          <Property Name="idPayment" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="appointments" Relationship="Self.FK__appointme__idBil__4AB81AF0" FromRole="bill" ToRole="appointment" />
+          <NavigationProperty Name="payment" Relationship="Self.FK__bill__idPayment__47DBAE45" FromRole="bill" ToRole="payment" />
+          <NavigationProperty Name="statusBill" Relationship="Self.FK__bill__idStatusBi__46E78A0C" FromRole="bill" ToRole="statusBill" />
+        </EntityType>
+        <EntityType Name="doctor">
+          <Key>
+            <PropertyRef Name="idDoctor" />
+          </Key>
+          <Property Name="idDoctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersonInformation" Type="Int32" />
+          <Property Name="idPhoto" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="appointments" Relationship="Self.FK__appointme__idDoc__4BAC3F29" FromRole="doctor" ToRole="appointment" />
+          <NavigationProperty Name="personinformation" Relationship="Self.FK__doctor__idPerson__3B75D760" FromRole="doctor" ToRole="personinformation" />
+          <NavigationProperty Name="doctorPhoto" Relationship="Self.FK__doctor__idPhoto__5629CD9C" FromRole="doctor" ToRole="doctorPhoto" />
+          <NavigationProperty Name="patients" Relationship="Self.FK__patient__idDoc__7A672E12" FromRole="doctor" ToRole="patient" />
+        </EntityType>
+        <EntityType Name="doctorPhoto">
+          <Key>
+            <PropertyRef Name="idPhoto" />
+          </Key>
+          <Property Name="idPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="doctors" Relationship="Self.FK__doctor__idPhoto__5629CD9C" FromRole="doctorPhoto" ToRole="doctor" />
+        </EntityType>
+        <EntityType Name="doctorProcedure">
+          <Key>
+            <PropertyRef Name="idProcedure" />
+          </Key>
+          <Property Name="idProcedure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameProcedure" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="appointments" Relationship="Self.FK__appointme__idPro__5AEE82B9" FromRole="doctorProcedure" ToRole="appointment" />
+        </EntityType>
+        <EntityType Name="patient">
+          <Key>
+            <PropertyRef Name="idPatient" />
+          </Key>
+          <Property Name="idPatient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersonInformation" Type="Int32" />
+          <Property Name="idDoc" Type="Int32" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="recordStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="appointments" Relationship="Self.FK__appointme__idPat__4CA06362" FromRole="patient" ToRole="appointment" />
+          <NavigationProperty Name="doctor" Relationship="Self.FK__patient__idDoc__7A672E12" FromRole="patient" ToRole="doctor" />
+          <NavigationProperty Name="personinformation" Relationship="Self.FK__patient__idPerso__38996AB5" FromRole="patient" ToRole="personinformation" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="idPayment" />
+          </Key>
+          <Property Name="idPayment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payDate" Type="DateTime" Precision="0" />
+          <Property Name="idPayMethod" Type="Int32" />
+          <Property Name="recordStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bills" Relationship="Self.FK__bill__idPayment__47DBAE45" FromRole="payment" ToRole="bill" />
+          <NavigationProperty Name="PayMethod" Relationship="Self.FK__payment__idPayMe__4222D4EF" FromRole="payment" ToRole="PayMethod" />
+        </EntityType>
+        <EntityType Name="PayMethod">
+          <Key>
+            <PropertyRef Name="idPayMethod" />
+          </Key>
+          <Property Name="idPayMethod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namePayMehod" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="payments" Relationship="Self.FK__payment__idPayMe__4222D4EF" FromRole="PayMethod" ToRole="payment" />
+        </EntityType>
+        <EntityType Name="personinformation">
+          <Key>
+            <PropertyRef Name="idPersonInformation" />
+          </Key>
+          <Property Name="idPersonInformation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="birthdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="doctors" Relationship="Self.FK__doctor__idPerson__3B75D760" FromRole="personinformation" ToRole="doctor" />
+          <NavigationProperty Name="patients" Relationship="Self.FK__patient__idPerso__38996AB5" FromRole="personinformation" ToRole="patient" />
+        </EntityType>
+        <EntityType Name="statusBill">
+          <Key>
+            <PropertyRef Name="idStatusBill" />
+          </Key>
+          <Property Name="idStatusBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameStatusBill" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bills" Relationship="Self.FK__bill__idStatusBi__46E78A0C" FromRole="statusBill" ToRole="bill" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="idUserType" />
+          </Key>
+          <Property Name="idUserType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="displayName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="accounts" Relationship="Self.FK__account__idUserT__72C60C4A" FromRole="UserType" ToRole="account" />
+        </EntityType>
+        <Association Name="FK__account__idUserT__72C60C4A">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="account" Type="Self.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="idUserType" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="idUserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idBil__4AB81AF0">
+          <End Role="bill" Type="Self.bill" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bill">
+              <PropertyRef Name="idBill" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idBill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idDoc__4BAC3F29">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="idDoctor" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idPat__4CA06362">
+          <End Role="patient" Type="Self.patient" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="patient">
+              <PropertyRef Name="idPatient" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__appointme__idPro__5AEE82B9">
+          <End Role="doctorProcedure" Type="Self.doctorProcedure" Multiplicity="0..1" />
+          <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctorProcedure">
+              <PropertyRef Name="idProcedure" />
+            </Principal>
+            <Dependent Role="appointment">
+              <PropertyRef Name="idProcedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bill__idPayment__47DBAE45">
+          <End Role="payment" Type="Self.payment" Multiplicity="0..1" />
+          <End Role="bill" Type="Self.bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment">
+              <PropertyRef Name="idPayment" />
+            </Principal>
+            <Dependent Role="bill">
+              <PropertyRef Name="idPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bill__idStatusBi__46E78A0C">
+          <End Role="statusBill" Type="Self.statusBill" Multiplicity="0..1" />
+          <End Role="bill" Type="Self.bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusBill">
+              <PropertyRef Name="idStatusBill" />
+            </Principal>
+            <Dependent Role="bill">
+              <PropertyRef Name="idStatusBill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doctor__idPerson__3B75D760">
+          <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+          <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personinformation">
+              <PropertyRef Name="idPersonInformation" />
+            </Principal>
+            <Dependent Role="doctor">
+              <PropertyRef Name="idPersonInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doctor__idPhoto__5629CD9C">
+          <End Role="doctorPhoto" Type="Self.doctorPhoto" Multiplicity="0..1" />
+          <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctorPhoto">
+              <PropertyRef Name="idPhoto" />
+            </Principal>
+            <Dependent Role="doctor">
+              <PropertyRef Name="idPhoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__patient__idDoc__7A672E12">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="0..1" />
+          <End Role="patient" Type="Self.patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="idDoctor" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="idDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__patient__idPerso__38996AB5">
+          <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+          <End Role="patient" Type="Self.patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personinformation">
+              <PropertyRef Name="idPersonInformation" />
+            </Principal>
+            <Dependent Role="patient">
+              <PropertyRef Name="idPersonInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__payment__idPayMe__4222D4EF">
+          <End Role="PayMethod" Type="Self.PayMethod" Multiplicity="0..1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayMethod">
+              <PropertyRef Name="idPayMethod" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="idPayMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DentistOfficeEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="appointments" EntityType="Self.appointment" />
+          <EntitySet Name="bills" EntityType="Self.bill" />
+          <EntitySet Name="doctors" EntityType="Self.doctor" />
+          <EntitySet Name="doctorPhotoes" EntityType="Self.doctorPhoto" />
+          <EntitySet Name="doctorProcedures" EntityType="Self.doctorProcedure" />
+          <EntitySet Name="patients" EntityType="Self.patient" />
+          <EntitySet Name="payments" EntityType="Self.payment" />
+          <EntitySet Name="PayMethods" EntityType="Self.PayMethod" />
+          <EntitySet Name="personinformations" EntityType="Self.personinformation" />
+          <EntitySet Name="statusBills" EntityType="Self.statusBill" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="FK__account__idUserT__72C60C4A" Association="Self.FK__account__idUserT__72C60C4A">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="account" EntitySet="accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idBil__4AB81AF0" Association="Self.FK__appointme__idBil__4AB81AF0">
+            <End Role="bill" EntitySet="bills" />
+            <End Role="appointment" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idDoc__4BAC3F29" Association="Self.FK__appointme__idDoc__4BAC3F29">
+            <End Role="doctor" EntitySet="doctors" />
+            <End Role="appointment" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idPat__4CA06362" Association="Self.FK__appointme__idPat__4CA06362">
+            <End Role="patient" EntitySet="patients" />
+            <End Role="appointment" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__appointme__idPro__5AEE82B9" Association="Self.FK__appointme__idPro__5AEE82B9">
+            <End Role="doctorProcedure" EntitySet="doctorProcedures" />
+            <End Role="appointment" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bill__idPayment__47DBAE45" Association="Self.FK__bill__idPayment__47DBAE45">
+            <End Role="payment" EntitySet="payments" />
+            <End Role="bill" EntitySet="bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bill__idStatusBi__46E78A0C" Association="Self.FK__bill__idStatusBi__46E78A0C">
+            <End Role="statusBill" EntitySet="statusBills" />
+            <End Role="bill" EntitySet="bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doctor__idPerson__3B75D760" Association="Self.FK__doctor__idPerson__3B75D760">
+            <End Role="personinformation" EntitySet="personinformations" />
+            <End Role="doctor" EntitySet="doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doctor__idPhoto__5629CD9C" Association="Self.FK__doctor__idPhoto__5629CD9C">
+            <End Role="doctorPhoto" EntitySet="doctorPhotoes" />
+            <End Role="doctor" EntitySet="doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__patient__idDoc__7A672E12" Association="Self.FK__patient__idDoc__7A672E12">
+            <End Role="doctor" EntitySet="doctors" />
+            <End Role="patient" EntitySet="patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__patient__idPerso__38996AB5" Association="Self.FK__patient__idPerso__38996AB5">
+            <End Role="personinformation" EntitySet="personinformations" />
+            <End Role="patient" EntitySet="patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__payment__idPayMe__4222D4EF" Association="Self.FK__payment__idPayMe__4222D4EF">
+            <End Role="PayMethod" EntitySet="PayMethods" />
+            <End Role="payment" EntitySet="payments" />
+          </AssociationSet>
+          <FunctionImport Name="AddAccount">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="idUserType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddAppointment">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="duration" Mode="In" Type="Int32" />
+            <Parameter Name="iddoc" Mode="In" Type="Int32" />
+            <Parameter Name="idpatient" Mode="In" Type="Int32" />
+            <Parameter Name="idprocedure" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddDoctorDetails">
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="adress" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddMedicalProcedure">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddPatientDetails">
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="adress" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="docId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddPhotoAndFindId">
+            <Parameter Name="img" Mode="In" Type="Binary" />
+            <Parameter Name="id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeactivateAccount">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeactivateAppointment">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeactivateDoctor">
+          <Parameter Name="idDoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeactivateMedicalProcedure">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeactivatePatient">
+          <Parameter Name="idDoc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FindDoctor">
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="idDoctor" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FindPatient">
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="idPatient" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FindPersonInformation">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="idPersonInformation" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyAccount">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ModifyAppointment">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="duration" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="iddoc" Mode="In" Type="Int32" />
+            <Parameter Name="idpatient" Mode="In" Type="Int32" />
+            <Parameter Name="idprocedure" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateDoctorDetails">
+            <Parameter Name="idDoc" Mode="In" Type="Int32" />
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="adress" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateMedicalProcedure">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePatientDetails">
+            <Parameter Name="idpatient" Mode="In" Type="Int32" />
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="adress" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="docId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SearchPatient" ReturnType="Collection(DentistOfficeModel.SearchPatient_Result)">
+            <Parameter Name="fullname" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CalculateSalaryOnMonth" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="salary" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SearchPatient_Result">
+          <Property Type="Int32" Name="idPatient" Nullable="false" />
+          <Property Type="Int32" Name="idPersonInformation" Nullable="true" />
+          <Property Type="Int32" Name="idDoc" Nullable="true" />
+          <Property Type="String" Name="fullname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="recordStatus" Nullable="true" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DentistOfficeModelStoreContainer" CdmEntityContainer="DentistOfficeEntities2">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="DentistOfficeModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="idUserType" ColumnName="idUserType" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="appointments">
+            <EntityTypeMapping TypeName="DentistOfficeModel.appointment">
+              <MappingFragment StoreEntitySet="appointment">
+                <ScalarProperty Name="idAppointment" ColumnName="idAppointment" />
+                <ScalarProperty Name="dateAppointment" ColumnName="dateAppointment" />
+                <ScalarProperty Name="timeAppointemnt" ColumnName="timeAppointemnt" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="idBill" ColumnName="idBill" />
+                <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+                <ScalarProperty Name="idPatient" ColumnName="idPatient" />
+                <ScalarProperty Name="idProcedure" ColumnName="idProcedure" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bills">
+            <EntityTypeMapping TypeName="DentistOfficeModel.bill">
+              <MappingFragment StoreEntitySet="bill">
+                <ScalarProperty Name="idBill" ColumnName="idBill" />
+                <ScalarProperty Name="dateBill" ColumnName="dateBill" />
+                <ScalarProperty Name="idStatusBill" ColumnName="idStatusBill" />
+                <ScalarProperty Name="idPayment" ColumnName="idPayment" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doctors">
+            <EntityTypeMapping TypeName="DentistOfficeModel.doctor">
+              <MappingFragment StoreEntitySet="doctor">
+                <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+                <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+                <ScalarProperty Name="idPhoto" ColumnName="idPhoto" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doctorPhotoes">
+            <EntityTypeMapping TypeName="DentistOfficeModel.doctorPhoto">
+              <MappingFragment StoreEntitySet="doctorPhoto">
+                <ScalarProperty Name="idPhoto" ColumnName="idPhoto" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doctorProcedures">
+            <EntityTypeMapping TypeName="DentistOfficeModel.doctorProcedure">
+              <MappingFragment StoreEntitySet="doctorProcedure">
+                <ScalarProperty Name="idProcedure" ColumnName="idProcedure" />
+                <ScalarProperty Name="nameProcedure" ColumnName="nameProcedure" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="patients">
+            <EntityTypeMapping TypeName="DentistOfficeModel.patient">
+              <MappingFragment StoreEntitySet="patient">
+                <ScalarProperty Name="idPatient" ColumnName="idPatient" />
+                <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+                <ScalarProperty Name="idDoc" ColumnName="idDoc" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payments">
+            <EntityTypeMapping TypeName="DentistOfficeModel.payment">
+              <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="idPayment" ColumnName="idPayment" />
+                <ScalarProperty Name="payDate" ColumnName="payDate" />
+                <ScalarProperty Name="idPayMethod" ColumnName="idPayMethod" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayMethods">
+            <EntityTypeMapping TypeName="DentistOfficeModel.PayMethod">
+              <MappingFragment StoreEntitySet="PayMethod">
+                <ScalarProperty Name="idPayMethod" ColumnName="idPayMethod" />
+                <ScalarProperty Name="namePayMehod" ColumnName="namePayMehod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personinformations">
+            <EntityTypeMapping TypeName="DentistOfficeModel.personinformation">
+              <MappingFragment StoreEntitySet="personinformation">
+                <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statusBills">
+            <EntityTypeMapping TypeName="DentistOfficeModel.statusBill">
+              <MappingFragment StoreEntitySet="statusBill">
+                <ScalarProperty Name="idStatusBill" ColumnName="idStatusBill" />
+                <ScalarProperty Name="nameStatusBill" ColumnName="nameStatusBill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="DentistOfficeModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="idUserType" ColumnName="idUserType" />
+                <ScalarProperty Name="displayName" ColumnName="displayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddAccount" FunctionName="DentistOfficeModel.Store.AddAccount" />
+          <FunctionImportMapping FunctionImportName="AddAppointment" FunctionName="DentistOfficeModel.Store.AddAppointment" />
+          <FunctionImportMapping FunctionImportName="AddDoctorDetails" FunctionName="DentistOfficeModel.Store.AddDoctorDetails" />
+          <FunctionImportMapping FunctionImportName="AddMedicalProcedure" FunctionName="DentistOfficeModel.Store.AddMedicalProcedure" />
+          <FunctionImportMapping FunctionImportName="AddPatientDetails" FunctionName="DentistOfficeModel.Store.AddPatientDetails" />
+          <FunctionImportMapping FunctionImportName="AddPhotoAndFindId" FunctionName="DentistOfficeModel.Store.AddPhotoAndFindId" />
+          <FunctionImportMapping FunctionImportName="DeactivateAccount" FunctionName="DentistOfficeModel.Store.DeactivateAccount" />
+          <FunctionImportMapping FunctionImportName="DeactivateAppointment" FunctionName="DentistOfficeModel.Store.DeactivateAppointment" />
+          <FunctionImportMapping FunctionImportName="DeactivateDoctor" FunctionName="DentistOfficeModel.Store.DeactivateDoctor" />
+          <FunctionImportMapping FunctionImportName="DeactivateMedicalProcedure" FunctionName="DentistOfficeModel.Store.DeactivateMedicalProcedure" />
+          <FunctionImportMapping FunctionImportName="DeactivatePatient" FunctionName="DentistOfficeModel.Store.DeactivatePatient" />
+          <FunctionImportMapping FunctionImportName="FindDoctor" FunctionName="DentistOfficeModel.Store.FindDoctor" />
+          <FunctionImportMapping FunctionImportName="FindPatient" FunctionName="DentistOfficeModel.Store.FindPatient" />
+          <FunctionImportMapping FunctionImportName="FindPersonInformation" FunctionName="DentistOfficeModel.Store.FindPersonInformation" />
+          <FunctionImportMapping FunctionImportName="ModifyAccount" FunctionName="DentistOfficeModel.Store.ModifyAccount" />
+          <FunctionImportMapping FunctionImportName="ModifyAppointment" FunctionName="DentistOfficeModel.Store.ModifyAppointment" />
+          <FunctionImportMapping FunctionImportName="UpdateDoctorDetails" FunctionName="DentistOfficeModel.Store.UpdateDoctorDetails" />
+          <FunctionImportMapping FunctionImportName="UpdateMedicalProcedure" FunctionName="DentistOfficeModel.Store.UpdateMedicalProcedure" />
+          <FunctionImportMapping FunctionImportName="UpdatePatientDetails" FunctionName="DentistOfficeModel.Store.UpdatePatientDetails" />
+          <FunctionImportMapping FunctionImportName="SearchPatient" FunctionName="DentistOfficeModel.Store.SearchPatient">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DentistOfficeModel.SearchPatient_Result">
+                <ScalarProperty Name="idPatient" ColumnName="idPatient" />
+                <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+                <ScalarProperty Name="idDoc" ColumnName="idDoc" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CalculateSalaryOnMonth" FunctionName="DentistOfficeModel.Store.CalculateSalaryOnMonth" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

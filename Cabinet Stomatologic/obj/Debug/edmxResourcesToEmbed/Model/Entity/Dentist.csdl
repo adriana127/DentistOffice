@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DentistOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="appointment">
+    <Key>
+      <PropertyRef Name="idAppointment" />
+    </Key>
+    <Property Name="idAppointment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dateAppointment" Type="DateTime" Precision="0" />
+    <Property Name="timeAppointemnt" Type="Time" Precision="7" />
+    <Property Name="duration" Type="Int32" />
+    <Property Name="idBill" Type="Int32" />
+    <Property Name="idDoctor" Type="Int32" />
+    <Property Name="idPatient" Type="Int32" />
+    <NavigationProperty Name="bill" Relationship="Self.FK__appointme__idBil__4AB81AF0" FromRole="appointment" ToRole="bill" />
+    <NavigationProperty Name="doctor" Relationship="Self.FK__appointme__idDoc__4BAC3F29" FromRole="appointment" ToRole="doctor" />
+    <NavigationProperty Name="patient" Relationship="Self.FK__appointme__idPat__4CA06362" FromRole="appointment" ToRole="patient" />
+    <Property Name="idProcedure" Type="Int32" />
+    <NavigationProperty Name="doctorProcedure" Relationship="DentistOfficeModel.FK__appointme__idPro__5AEE82B9" FromRole="appointment" ToRole="doctorProcedure" />
+  </EntityType>
+  <EntityType Name="bill">
+    <Key>
+      <PropertyRef Name="idBill" />
+    </Key>
+    <Property Name="idBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dateBill" Type="DateTime" Precision="0" />
+    <Property Name="idStatusBill" Type="Int32" />
+    <Property Name="idPayment" Type="Int32" />
+    <NavigationProperty Name="appointments" Relationship="Self.FK__appointme__idBil__4AB81AF0" FromRole="bill" ToRole="appointment" />
+    <NavigationProperty Name="payment" Relationship="Self.FK__bill__idPayment__47DBAE45" FromRole="bill" ToRole="payment" />
+    <NavigationProperty Name="statusBill" Relationship="Self.FK__bill__idStatusBi__46E78A0C" FromRole="bill" ToRole="statusBill" />
+  </EntityType>
+  <EntityType Name="doctor">
+    <Key>
+      <PropertyRef Name="idDoctor" />
+    </Key>
+    <Property Name="idDoctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idPersonInformation" Type="Int32" />
+    <NavigationProperty Name="appointments" Relationship="Self.FK__appointme__idDoc__4BAC3F29" FromRole="doctor" ToRole="appointment" />
+    <NavigationProperty Name="personinformation" Relationship="Self.FK__doctor__idPerson__3B75D760" FromRole="doctor" ToRole="personinformation" />
+    <Property Name="idPhoto" Type="Int32" />
+    <NavigationProperty Name="doctorPhoto" Relationship="DentistOfficeModel.FK__doctor__idPhoto__5629CD9C" FromRole="doctor" ToRole="doctorPhoto" />
+    <Property Name="recordStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="doctorProcedure">
+    <Key>
+      <PropertyRef Name="idProcedure" />
+    </Key>
+    <Property Name="idProcedure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameProcedure" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="appointments" Relationship="DentistOfficeModel.FK__appointme__idPro__5AEE82B9" FromRole="doctorProcedure" ToRole="appointment" />
+  </EntityType>
+  <EntityType Name="patient">
+    <Key>
+      <PropertyRef Name="idPatient" />
+    </Key>
+    <Property Name="idPatient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idPersonInformation" Type="Int32" />
+    <NavigationProperty Name="appointments" Relationship="Self.FK__appointme__idPat__4CA06362" FromRole="patient" ToRole="appointment" />
+    <NavigationProperty Name="personinformation" Relationship="Self.FK__patient__idPerso__38996AB5" FromRole="patient" ToRole="personinformation" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="idPayment" />
+    </Key>
+    <Property Name="idPayment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="payDate" Type="DateTime" Precision="0" />
+    <Property Name="idPayMethod" Type="Int32" />
+    <NavigationProperty Name="bills" Relationship="Self.FK__bill__idPayment__47DBAE45" FromRole="payment" ToRole="bill" />
+    <NavigationProperty Name="PayMethod" Relationship="Self.FK__payment__idPayMe__4222D4EF" FromRole="payment" ToRole="PayMethod" />
+  </EntityType>
+  <EntityType Name="PayMethod">
+    <Key>
+      <PropertyRef Name="idPayMethod" />
+    </Key>
+    <Property Name="idPayMethod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="namePayMehod" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="payments" Relationship="Self.FK__payment__idPayMe__4222D4EF" FromRole="PayMethod" ToRole="payment" />
+  </EntityType>
+  <EntityType Name="personinformation">
+    <Key>
+      <PropertyRef Name="idPersonInformation" />
+    </Key>
+    <Property Name="idPersonInformation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="birthdate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="doctors" Relationship="Self.FK__doctor__idPerson__3B75D760" FromRole="personinformation" ToRole="doctor" />
+    <NavigationProperty Name="patients" Relationship="Self.FK__patient__idPerso__38996AB5" FromRole="personinformation" ToRole="patient" />
+  </EntityType>
+  <EntityType Name="statusBill">
+    <Key>
+      <PropertyRef Name="idStatusBill" />
+    </Key>
+    <Property Name="idStatusBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameStatusBill" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bills" Relationship="Self.FK__bill__idStatusBi__46E78A0C" FromRole="statusBill" ToRole="bill" />
+  </EntityType>
+  <Association Name="FK__appointme__idBil__4AB81AF0">
+    <End Role="bill" Type="Self.bill" Multiplicity="0..1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bill">
+        <PropertyRef Name="idBill" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__appointme__idDoc__4BAC3F29">
+    <End Role="doctor" Type="Self.doctor" Multiplicity="0..1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctor">
+        <PropertyRef Name="idDoctor" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__appointme__idPat__4CA06362">
+    <End Role="patient" Type="Self.patient" Multiplicity="0..1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patient">
+        <PropertyRef Name="idPatient" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idPatient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__bill__idPayment__47DBAE45">
+    <End Role="payment" Type="Self.payment" Multiplicity="0..1" />
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payment">
+        <PropertyRef Name="idPayment" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="idPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__bill__idStatusBi__46E78A0C">
+    <End Role="statusBill" Type="Self.statusBill" Multiplicity="0..1" />
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusBill">
+        <PropertyRef Name="idStatusBill" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="idStatusBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__doctor__idPerson__3B75D760">
+    <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+    <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personinformation">
+        <PropertyRef Name="idPersonInformation" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="idPersonInformation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__patient__idPerso__38996AB5">
+    <End Role="personinformation" Type="Self.personinformation" Multiplicity="0..1" />
+    <End Role="patient" Type="Self.patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personinformation">
+        <PropertyRef Name="idPersonInformation" />
+      </Principal>
+      <Dependent Role="patient">
+        <PropertyRef Name="idPersonInformation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payment__idPayMe__4222D4EF">
+    <End Role="PayMethod" Type="Self.PayMethod" Multiplicity="0..1" />
+    <End Role="payment" Type="Self.payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PayMethod">
+        <PropertyRef Name="idPayMethod" />
+      </Principal>
+      <Dependent Role="payment">
+        <PropertyRef Name="idPayMethod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DentistOfficeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="appointments" EntityType="Self.appointment" />
+    <EntitySet Name="bills" EntityType="Self.bill" />
+    <EntitySet Name="doctors" EntityType="Self.doctor" />
+    <EntitySet Name="doctorProcedures" EntityType="Self.doctorProcedure" />
+    <EntitySet Name="patients" EntityType="Self.patient" />
+    <EntitySet Name="payments" EntityType="Self.payment" />
+    <EntitySet Name="PayMethods" EntityType="Self.PayMethod" />
+    <EntitySet Name="personinformations" EntityType="Self.personinformation" />
+    <EntitySet Name="statusBills" EntityType="Self.statusBill" />
+    <AssociationSet Name="FK__appointme__idBil__4AB81AF0" Association="Self.FK__appointme__idBil__4AB81AF0">
+      <End Role="bill" EntitySet="bills" />
+      <End Role="appointment" EntitySet="appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__appointme__idDoc__4BAC3F29" Association="Self.FK__appointme__idDoc__4BAC3F29">
+      <End Role="doctor" EntitySet="doctors" />
+      <End Role="appointment" EntitySet="appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__appointme__idPat__4CA06362" Association="Self.FK__appointme__idPat__4CA06362">
+      <End Role="patient" EntitySet="patients" />
+      <End Role="appointment" EntitySet="appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__bill__idPayment__47DBAE45" Association="Self.FK__bill__idPayment__47DBAE45">
+      <End Role="payment" EntitySet="payments" />
+      <End Role="bill" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__bill__idStatusBi__46E78A0C" Association="Self.FK__bill__idStatusBi__46E78A0C">
+      <End Role="statusBill" EntitySet="statusBills" />
+      <End Role="bill" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__doctor__idPerson__3B75D760" Association="Self.FK__doctor__idPerson__3B75D760">
+      <End Role="personinformation" EntitySet="personinformations" />
+      <End Role="doctor" EntitySet="doctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__patient__idPerso__38996AB5" Association="Self.FK__patient__idPerso__38996AB5">
+      <End Role="personinformation" EntitySet="personinformations" />
+      <End Role="patient" EntitySet="patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payment__idPayMe__4222D4EF" Association="Self.FK__payment__idPayMe__4222D4EF">
+      <End Role="PayMethod" EntitySet="PayMethods" />
+      <End Role="payment" EntitySet="payments" />
+    </AssociationSet>
+    <FunctionImport Name="AddDoctor">
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddDoctorDetails">
+      <Parameter Name="fullname" Mode="In" Type="String" />
+      <Parameter Name="adress" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddPatient">
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddPatientDetails">
+      <Parameter Name="idPatient" Mode="In" Type="Int32" />
+      <Parameter Name="adress" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="birthDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FindDoctor">
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="idDoctor" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="FindPatient">
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="idPatient" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="FindPersonInformation">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="idPersonInformation" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="doctorPhotoes" EntityType="DentistOfficeModel.doctorPhoto" />
+    <AssociationSet Name="FK__appointme__idPro__5AEE82B9" Association="DentistOfficeModel.FK__appointme__idPro__5AEE82B9">
+      <End Role="doctorProcedure" EntitySet="doctorProcedures" />
+      <End Role="appointment" EntitySet="appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__doctor__idPhoto__5629CD9C" Association="DentistOfficeModel.FK__doctor__idPhoto__5629CD9C">
+      <End Role="doctorPhoto" EntitySet="doctorPhotoes" />
+      <End Role="doctor" EntitySet="doctors" />
+    </AssociationSet>
+    <FunctionImport Name="AddPhotoAndFindId">
+      <Parameter Name="img" Mode="In" Type="Binary" />
+      <Parameter Name="id" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="accounts" EntityType="DentistOfficeModel.account" />
+    <EntitySet Name="UserTypes" EntityType="DentistOfficeModel.UserType" />
+    <AssociationSet Name="FK__account__idUserT__72C60C4A" Association="DentistOfficeModel.FK__account__idUserT__72C60C4A">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="account" EntitySet="accounts" />
+    </AssociationSet>
+    <FunctionImport Name="AddAccount">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="idUserType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeactivateDoctor">
+      <Parameter Name="idDoc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateDoctorDetails">
+      <Parameter Name="idDoc" Mode="In" Type="Int32" />
+      <Parameter Name="fullname" Mode="In" Type="String" />
+      <Parameter Name="adress" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="doctorPhoto">
+    <Key>
+      <PropertyRef Name="idPhoto" />
+    </Key>
+    <Property Name="idPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="doctors" Relationship="DentistOfficeModel.FK__doctor__idPhoto__5629CD9C" FromRole="doctorPhoto" ToRole="doctor" />
+  </EntityType>
+  <Association Name="FK__appointme__idPro__5AEE82B9">
+    <End Type="DentistOfficeModel.doctorProcedure" Role="doctorProcedure" Multiplicity="0..1" />
+    <End Type="DentistOfficeModel.appointment" Role="appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctorProcedure">
+        <PropertyRef Name="idProcedure" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="idProcedure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__doctor__idPhoto__5629CD9C">
+    <End Type="DentistOfficeModel.doctorPhoto" Role="doctorPhoto" Multiplicity="0..1" />
+    <End Type="DentistOfficeModel.doctor" Role="doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctorPhoto">
+        <PropertyRef Name="idPhoto" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="idPhoto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="idAccount" />
+    </Key>
+    <Property Name="idAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idUserType" Type="Int32" />
+    <NavigationProperty Name="UserType" Relationship="DentistOfficeModel.FK__account__idUserT__72C60C4A" FromRole="account" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="idUserType" />
+    </Key>
+    <Property Name="idUserType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="displayName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="accounts" Relationship="DentistOfficeModel.FK__account__idUserT__72C60C4A" FromRole="UserType" ToRole="account" />
+  </EntityType>
+  <Association Name="FK__account__idUserT__72C60C4A">
+    <End Type="DentistOfficeModel.UserType" Role="UserType" Multiplicity="0..1" />
+    <End Type="DentistOfficeModel.account" Role="account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="idUserType" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="idUserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

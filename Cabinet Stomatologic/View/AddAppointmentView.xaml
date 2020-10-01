@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Cabinet_Stomatologic.View.AddAppointmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cabinet_Stomatologic.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ListView HorizontalAlignment="Left" SelectedItem="{Binding SelectedPatient}" ItemsSource="{Binding ListPatients,UpdateSourceTrigger=PropertyChanged}"  Height="70" Margin="75,60,0,0" VerticalAlignment="Top" Width="360">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Patient" Width="200
+                                    " DisplayMemberBinding="{Binding fullname, UpdateSourceTrigger=PropertyChanged}" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView HorizontalAlignment="Left" ItemsSource="{Binding ListDoctors}" SelectedItem="{Binding SelectedDoctor}"  Height="75" Margin="75,195,0,0" VerticalAlignment="Top" Width="360">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Doctor" Width="200
+                                    " DisplayMemberBinding="{Binding fullname, UpdateSourceTrigger=PropertyChanged}" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView ItemsSource="{Binding ProcedureList}" SelectedItem="{Binding SelectedProcedure}" HorizontalAlignment="Left" Height="130" Margin="75,275,0,0" VerticalAlignment="Top" Width="360" IsSynchronizedWithCurrentItem="False">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Procedure" Width="200
+                                    " DisplayMemberBinding="{Binding nameProcedure, UpdateSourceTrigger=PropertyChanged}" />
+                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price, UpdateSourceTrigger=PropertyChanged}" />
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <TextBox HorizontalAlignment="Left" Height="45" Margin="75,10,0,0" TextWrapping="Wrap"  Text="{Binding PatientSearch,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="360"/>
+        <TextBox HorizontalAlignment="Left" Height="45" Margin="75,145,0,0" TextWrapping="Wrap" Text="{Binding DoctorSearch}" VerticalAlignment="Top" Width="360"/>
+        <DatePicker HorizontalAlignment="Left" Margin="515,60,0,0" SelectedDate="{Binding SelectedDate}"  VerticalAlignment="Top" Height="25" Width="165"/>
+        <Button Content="Save" Command="{Binding Save}" HorizontalAlignment="Left" Margin="605,340,0,0" VerticalAlignment="Top" Width="75" Height="65"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="515,197,0,0" TextWrapping="Wrap" Text="{Binding Duration}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Duration" HorizontalAlignment="Left" Margin="515,145,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
+
+    </Grid>
+</UserControl>

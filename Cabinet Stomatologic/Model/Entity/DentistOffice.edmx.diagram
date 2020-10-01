@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38e44ff161e14454958cc1c7748bca5f" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DentistOfficeModel.account" Width="1.5" PointX="8" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.appointment" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.bill" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.doctor" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.doctorPhoto" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.doctorProcedure" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.patient" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.payment" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.PayMethod" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.personinformation" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.statusBill" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentistOfficeModel.UserType" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="DentistOfficeModel.FK__account__idUserT__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__appointme__idBil__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__appointme__idDoc__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__appointme__idPat__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__appointme__idPro__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__bill__idPayment__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__bill__idStatusBi__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__doctor__idPerson__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__doctor__idPhoto__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__patient__idDoc__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__patient__idPerso__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="DentistOfficeModel.FK__payment__idPayMe__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

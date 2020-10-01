@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DentistOfficeModelStoreContainer" CdmEntityContainer="DentistOfficeEntities2">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="DentistOfficeModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="idUserType" ColumnName="idUserType" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appointments">
+      <EntityTypeMapping TypeName="DentistOfficeModel.appointment">
+        <MappingFragment StoreEntitySet="appointment">
+          <ScalarProperty Name="idAppointment" ColumnName="idAppointment" />
+          <ScalarProperty Name="dateAppointment" ColumnName="dateAppointment" />
+          <ScalarProperty Name="timeAppointemnt" ColumnName="timeAppointemnt" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="idBill" ColumnName="idBill" />
+          <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+          <ScalarProperty Name="idPatient" ColumnName="idPatient" />
+          <ScalarProperty Name="idProcedure" ColumnName="idProcedure" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bills">
+      <EntityTypeMapping TypeName="DentistOfficeModel.bill">
+        <MappingFragment StoreEntitySet="bill">
+          <ScalarProperty Name="idBill" ColumnName="idBill" />
+          <ScalarProperty Name="dateBill" ColumnName="dateBill" />
+          <ScalarProperty Name="idStatusBill" ColumnName="idStatusBill" />
+          <ScalarProperty Name="idPayment" ColumnName="idPayment" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="doctors">
+      <EntityTypeMapping TypeName="DentistOfficeModel.doctor">
+        <MappingFragment StoreEntitySet="doctor">
+          <ScalarProperty Name="idDoctor" ColumnName="idDoctor" />
+          <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+          <ScalarProperty Name="idPhoto" ColumnName="idPhoto" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="doctorPhotoes">
+      <EntityTypeMapping TypeName="DentistOfficeModel.doctorPhoto">
+        <MappingFragment StoreEntitySet="doctorPhoto">
+          <ScalarProperty Name="idPhoto" ColumnName="idPhoto" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="doctorProcedures">
+      <EntityTypeMapping TypeName="DentistOfficeModel.doctorProcedure">
+        <MappingFragment StoreEntitySet="doctorProcedure">
+          <ScalarProperty Name="idProcedure" ColumnName="idProcedure" />
+          <ScalarProperty Name="nameProcedure" ColumnName="nameProcedure" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patients">
+      <EntityTypeMapping TypeName="DentistOfficeModel.patient">
+        <MappingFragment StoreEntitySet="patient">
+          <ScalarProperty Name="idPatient" ColumnName="idPatient" />
+          <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+          <ScalarProperty Name="idDoc" ColumnName="idDoc" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="DentistOfficeModel.payment">
+        <MappingFragment StoreEntitySet="payment">
+          <ScalarProperty Name="idPayment" ColumnName="idPayment" />
+          <ScalarProperty Name="payDate" ColumnName="payDate" />
+          <ScalarProperty Name="idPayMethod" ColumnName="idPayMethod" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayMethods">
+      <EntityTypeMapping TypeName="DentistOfficeModel.PayMethod">
+        <MappingFragment StoreEntitySet="PayMethod">
+          <ScalarProperty Name="idPayMethod" ColumnName="idPayMethod" />
+          <ScalarProperty Name="namePayMehod" ColumnName="namePayMehod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personinformations">
+      <EntityTypeMapping TypeName="DentistOfficeModel.personinformation">
+        <MappingFragment StoreEntitySet="personinformation">
+          <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statusBills">
+      <EntityTypeMapping TypeName="DentistOfficeModel.statusBill">
+        <MappingFragment StoreEntitySet="statusBill">
+          <ScalarProperty Name="idStatusBill" ColumnName="idStatusBill" />
+          <ScalarProperty Name="nameStatusBill" ColumnName="nameStatusBill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="DentistOfficeModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="idUserType" ColumnName="idUserType" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddAccount" FunctionName="DentistOfficeModel.Store.AddAccount" />
+    <FunctionImportMapping FunctionImportName="AddAppointment" FunctionName="DentistOfficeModel.Store.AddAppointment" />
+    <FunctionImportMapping FunctionImportName="AddDoctorDetails" FunctionName="DentistOfficeModel.Store.AddDoctorDetails" />
+    <FunctionImportMapping FunctionImportName="AddMedicalProcedure" FunctionName="DentistOfficeModel.Store.AddMedicalProcedure" />
+    <FunctionImportMapping FunctionImportName="AddPatientDetails" FunctionName="DentistOfficeModel.Store.AddPatientDetails" />
+    <FunctionImportMapping FunctionImportName="AddPhotoAndFindId" FunctionName="DentistOfficeModel.Store.AddPhotoAndFindId" />
+    <FunctionImportMapping FunctionImportName="DeactivateAccount" FunctionName="DentistOfficeModel.Store.DeactivateAccount" />
+    <FunctionImportMapping FunctionImportName="DeactivateAppointment" FunctionName="DentistOfficeModel.Store.DeactivateAppointment" />
+    <FunctionImportMapping FunctionImportName="DeactivateDoctor" FunctionName="DentistOfficeModel.Store.DeactivateDoctor" />
+    <FunctionImportMapping FunctionImportName="DeactivateMedicalProcedure" FunctionName="DentistOfficeModel.Store.DeactivateMedicalProcedure" />
+    <FunctionImportMapping FunctionImportName="DeactivatePatient" FunctionName="DentistOfficeModel.Store.DeactivatePatient" />
+    <FunctionImportMapping FunctionImportName="FindDoctor" FunctionName="DentistOfficeModel.Store.FindDoctor" />
+    <FunctionImportMapping FunctionImportName="FindPatient" FunctionName="DentistOfficeModel.Store.FindPatient" />
+    <FunctionImportMapping FunctionImportName="FindPersonInformation" FunctionName="DentistOfficeModel.Store.FindPersonInformation" />
+    <FunctionImportMapping FunctionImportName="ModifyAccount" FunctionName="DentistOfficeModel.Store.ModifyAccount" />
+    <FunctionImportMapping FunctionImportName="ModifyAppointment" FunctionName="DentistOfficeModel.Store.ModifyAppointment" />
+    <FunctionImportMapping FunctionImportName="UpdateDoctorDetails" FunctionName="DentistOfficeModel.Store.UpdateDoctorDetails" />
+    <FunctionImportMapping FunctionImportName="UpdateMedicalProcedure" FunctionName="DentistOfficeModel.Store.UpdateMedicalProcedure" />
+    <FunctionImportMapping FunctionImportName="UpdatePatientDetails" FunctionName="DentistOfficeModel.Store.UpdatePatientDetails" />
+    <FunctionImportMapping FunctionImportName="SearchPatient" FunctionName="DentistOfficeModel.Store.SearchPatient">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DentistOfficeModel.SearchPatient_Result">
+          <ScalarProperty Name="idPatient" ColumnName="idPatient" />
+          <ScalarProperty Name="idPersonInformation" ColumnName="idPersonInformation" />
+          <ScalarProperty Name="idDoc" ColumnName="idDoc" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="recordStatus" ColumnName="recordStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CalculateSalaryOnMonth" FunctionName="DentistOfficeModel.Store.CalculateSalaryOnMonth" />
+  </EntityContainerMapping>
+</Mapping>

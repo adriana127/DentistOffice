@@ -1,0 +1,20 @@
+﻿Cabinet Stomatologic
+
+
+winexe
+C#
+.cs
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\obj\Debug\
+Cabinet_Stomatologic
+none
+false
+DEBUG;TRACE
+C:\Users\Adriana\Desktop\Cabinet Stomatologic\Cabinet Stomatologic\App.xaml
+122081274013
+2598477602
+55257459271
+211626135594
+MainWindow.xaml;View\AccountsView.xaml;View\AddAppointmentView.xaml;View\AppointmentsView.xaml;View\DoctorsView.xaml;View\FormAccountView.xaml;View\FormPersonView.xaml;View\LogInView.xaml;View\PatientView.xaml;View\PersonInfromationView.xaml;View\ProcedureView.xaml;View\SignUpView.xaml;
+
+True
+
